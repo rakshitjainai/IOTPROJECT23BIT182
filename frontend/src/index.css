@@ -1,0 +1,808 @@
+/* =====================================================================================
+   AeroSense IoT - HD Cyber-Glassmorphism Design System
+   ===================================================================================== */
+
+:root {
+  --bg-main: #07090e;
+  --bg-surface: rgba(16, 22, 36, 0.75);
+  --bg-surface-elevated: rgba(22, 31, 50, 0.85);
+  --bg-surface-hover: rgba(28, 40, 66, 0.9);
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(0, 242, 254, 0.35);
+  --border-active: rgba(0, 242, 254, 0.7);
+
+  --accent-cyan: #00f2fe;
+  --accent-blue: #4facfe;
+  --accent-purple: #9333ea;
+  --accent-violet: #a855f7;
+  --accent-emerald: #10b981;
+  --accent-amber: #f59e0b;
+  --accent-rose: #f43f5e;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --glow-cyan: 0 0 24px rgba(0, 242, 254, 0.35);
+  --glow-emerald: 0 0 24px rgba(16, 185, 129, 0.35);
+  --glow-purple: 0 0 24px rgba(168, 85, 247, 0.35);
+  --glow-amber: 0 0 24px rgba(245, 158, 11, 0.35);
+  --glow-rose: 0 0 24px rgba(244, 63, 94, 0.35);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-main);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 85% 20%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 85%, rgba(16, 185, 129, 0.05) 0%, transparent 55%),
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Card Utility */
+.glass-panel {
+  background: var(--bg-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-elevated {
+  background: var(--bg-surface-elevated);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* App Layout */
+.app-container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Header Styles */
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--glow-cyan);
+  color: #fff;
+}
+
+.brand-title-group h1 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 40%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-title-group p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.header-badges {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid var(--border-subtle);
+  background: rgba(10, 15, 26, 0.6);
+  color: var(--text-secondary);
+}
+
+.status-badge.online {
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.status-badge.offline {
+  border-color: rgba(244, 63, 94, 0.4);
+  color: #fda4af;
+  background: rgba(244, 63, 94, 0.12);
+}
+
+.status-badge.sim-active {
+  border-color: rgba(168, 85, 247, 0.4);
+  color: #d8b4fe;
+  background: rgba(168, 85, 247, 0.14);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  position: relative;
+}
+
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  background: inherit;
+  animation: pulse-ring 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  padding: 7px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-family: var(--font-main);
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.btn-secondary.active {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: var(--accent-violet);
+  color: #e9d5ff;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
+}
+
+/* Hero Section: AQI Showcase & LED Actuator */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 960px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* AQI Master Display Card */
+.aqi-card {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(16, 24, 40, 0.8), rgba(20, 30, 52, 0.65));
+}
+
+.card-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card-title svg {
+  color: var(--accent-cyan);
+}
+
+.mode-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
+.mode-tag.physical {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.mode-tag.simulated {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.aqi-content-layout {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.aqi-gauge-visual {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aqi-gauge-svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.aqi-gauge-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 10;
+}
+
+.aqi-gauge-meter {
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.4s ease;
+}
+
+.aqi-center-text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.aqi-number {
+  font-family: var(--font-mono);
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.aqi-max-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.aqi-meta {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.aqi-status-text {
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.aqi-description {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.aqi-scale-meter {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.aqi-scale-step {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.aqi-scale-step.active {
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* LED Actuator Remote Card */
+.led-card {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(16, 22, 38, 0.8), rgba(24, 30, 50, 0.7));
+  border: 1px solid var(--border-subtle);
+}
+
+.led-interactive-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0;
+  gap: 20px;
+}
+
+/* Glowing Diode / Lamp */
+.diode-container {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diode-bulb {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #1a2233;
+  border: 2px solid #2d3748;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+  color: #4b5563;
+  z-index: 2;
+}
+
+.diode-bulb.lit {
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, var(--accent-cyan) 50%, #0088cc 100%);
+  border-color: #ffffff;
+  color: #032030;
+  box-shadow: 
+    0 0 20px #00f2fe,
+    0 0 45px rgba(0, 242, 254, 0.6),
+    0 0 80px rgba(0, 242, 254, 0.3),
+    inset 0 0 12px #ffffff;
+}
+
+.diode-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.25) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.diode-bulb.lit + .diode-aura {
+  opacity: 1;
+  animation: diode-breathe 3s ease-in-out infinite alternate;
+}
+
+@keyframes diode-breathe {
+  0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.95; }
+}
+
+/* Master Toggle Button */
+.led-toggle-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: 9999px;
+  padding: 6px 8px 6px 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.led-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.led-toggle-btn.active {
+  background: rgba(0, 242, 254, 0.15);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+}
+
+.toggle-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.led-toggle-btn.active .toggle-label {
+  color: var(--accent-cyan);
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+}
+
+.toggle-switch-pill {
+  width: 48px;
+  height: 28px;
+  border-radius: 14px;
+  background: #1f2937;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.toggle-switch-pill.active {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+}
+
+.toggle-switch-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toggle-switch-pill.active .toggle-switch-thumb {
+  transform: translateX(20px);
+}
+
+.led-footer-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 14px;
+  font-family: var(--font-mono);
+}
+
+/* 4-Column Sensor Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1080px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.metric-card {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.metric-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metric-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.metric-icon-box.temp {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--accent-amber);
+}
+
+.metric-icon-box.hum {
+  background: rgba(0, 242, 254, 0.15);
+  color: var(--accent-cyan);
+}
+
+.metric-icon-box.tvoc {
+  background: rgba(168, 85, 247, 0.15);
+  color: var(--accent-violet);
+}
+
+.metric-icon-box.eco2 {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-emerald);
+}
+
+.metric-source-chip {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+}
+
+.metric-value-container {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.metric-main-value {
+  font-family: var(--font-mono);
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.metric-unit {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.metric-bottom-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 12px;
+}
+
+.metric-indicator-pill {
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* Charts & Diagnostic Grid */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 960px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chart-panel {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.chart-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chart-tab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chart-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.chart-tab-btn.active {
+  background: rgba(0, 242, 254, 0.15);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+/* Custom Interactive SVG Chart Canvas */
+.chart-viewport {
+  width: 100%;
+  height: 260px;
+  position: relative;
+}
+
+.svg-chart-container {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.chart-grid-line {
+  stroke: rgba(255, 255, 255, 0.05);
+  stroke-dasharray: 4 4;
+}
+
+.chart-axis-label {
+  fill: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+/* Diagnostics Panel */
+.diagnostics-panel {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.diag-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 0.85rem;
+}
+
+.diag-item:last-child {
+  border-bottom: none;
+}
+
+.diag-label {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.diag-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Raw Telemetry Inspector */
+.raw-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #7dd3fc;
+  overflow-x: auto;
+  max-height: 110px;
+  line-height: 1.4;
+}
+
+/* Scrollbar polish */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
